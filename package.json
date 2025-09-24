@@ -1,0 +1,13 @@
+{
+  "name": "uy-ishi",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev":"node --watch server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
