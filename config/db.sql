@@ -1,0 +1,39 @@
+-- Active: 1759236939102@@127.0.0.1@5432@odamlar
+
+CREATE Table users(
+    id VARCHAR(150) UNIQUE,
+    first_name VARCHAR(100) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    last_name VARCHAR(150) NOT NULL,
+    password VARCHAR(150) NOT NULL,
+    phone_number VARCHAR(120) NOT NULL,
+    address VARCHAR(140) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE posts(
+    id VARCHAR(120) UNIQUE,
+    title VARCHAR(120) NOT NULL,
+    content TEXT NOT NULL,
+    slug VARCHAR(120) NOT NULL,
+    user_id VARCHAR(20),
+    CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+
+CREATE TABLE comments(
+    id VARCHAR(120) UNIQUE,
+    content TEXT NOT NULL,
+    post_id VARCHAR(120),
+    CONSTRAINT fk_post FOREIGN KEY(post_id) REFERENCES posts(id),
+    user_id VARCHAR(120),
+    CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
